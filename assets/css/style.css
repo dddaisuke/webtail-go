@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 1em 0;
+  color: #ddd;
+  background: #111;
+}
+
+pre {
+  padding: 0 1em;
+  line-height: 1.25;
+  font-family: "Monaco", "Consolas", monospace;
+}
