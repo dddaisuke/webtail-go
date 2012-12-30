@@ -8,6 +8,7 @@ import (
   "text/template"
   "bufio"
   "os"
+  "os/exec"
 )
 
 var line string
@@ -34,6 +35,13 @@ func main() {
   http.HandleFunc("/", homeHandler)
   http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets"))))
   http.Handle("/ws", websocket.Handler(wsHandler))
+
+  go func() {
+    log.Println("test")
+    cmd := exec.Command("open", "http://localhost:8080/")
+    cmd.Run()
+  }()
+
   log.Println("http://localhost:8080/ listen start...")
   if err := http.ListenAndServe(*addr, nil); err != nil {
     log.Fatal("ListenAndServe:", err)
